@@ -1,7 +1,12 @@
 package WorkForm;
 
+import DataType.User;
+import Logics.DataBase;
+
 import javax.swing.*;
 import java.awt.event.*;
+
+import static WorkForm.WindowTools.moveToCenter;
 
 public class LoginDialog extends JDialog {
     private JPanel contentPane;
@@ -10,6 +15,7 @@ public class LoginDialog extends JDialog {
     private JTextField nameField;
     private JPasswordField passwordField;
     private JButton registerButton;
+    private User u;
 
     public LoginDialog() {
         setContentPane(contentPane);
@@ -42,6 +48,12 @@ public class LoginDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onRegister();
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -52,12 +64,41 @@ public class LoginDialog extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
+        u = DataBase.getUserByName(getUserName());
+        if (u == null || !u.getPassword().equals(String.valueOf(getPassword()))) {
+
+            System.out.printf("u.getPassword().equals(String.valueOf(getPassword(%s)))\n",String.valueOf(getPassword()));
+            System.out.printf("u == %s",u==null?"null":"user");
+            JOptionPane.showMessageDialog(this, "用户名或密码错误");
+            u = null;
+            return;
+        }
+
         dispose();
     }
 
     private void onCancel() {
-        // add your code here if necessary
+
         dispose();
+        System.exit(0);
+    }
+
+    private void onRegister() {
+        RegisterDialog registerDialog = new RegisterDialog();
+        registerDialog.pack();
+        moveToCenter(registerDialog);
+        registerDialog.setVisible(true);
+    }
+
+    public String getUserName() {
+        return nameField.getText();
+    }
+
+    public char[] getPassword() {
+        return passwordField.getPassword();
+    }
+
+    public User getUser() {
+        return u;
     }
 }

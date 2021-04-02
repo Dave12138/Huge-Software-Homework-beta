@@ -2,28 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="636e8f63-f08a-4d75-aedc-09721737ba40" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataType/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataType/DataTools.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataType/Train.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/CreateTrainDialog.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/CreateTrainDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/EmptyButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/ImagePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/StuffUserGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/StuffUserGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/UserChangePasswordDialog.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/UserChangePasswordDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkForm/WindowTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/86541424_p0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Logics/TicketSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WorkForm/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/MyCustomMessageException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/DataType/Train.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/DataType/Train.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/Logics/DataBase$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/Logics/DataBase$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/Logics/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/Logics/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/CreateTrainDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/DefaultUserGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/DefaultUserGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataType/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/EmptyButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/EmptyButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/ImagePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/ImagePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/LoginDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/RegisterDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/StuffUserGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/UserChangePasswordDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/UserChangePasswordDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/WindowTools.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/综合实践beta/WorkForm/WindowTools.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataType/Train.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataType/Train.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logics/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logics/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WorkForm/DefaultUserGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/DefaultUserGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/CreateTrainDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/CreateTrainDialog.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/CreateTrainDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/CreateTrainDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WorkForm/DefaultUserGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/DefaultUserGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/EmptyButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/EmptyButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/ImagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/LoginDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/RegisterDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/RegisterDialog.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/RegisterDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/RegisterDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/StuffUserGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/StuffUserGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/StuffUserGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/StuffUserGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/UserChangePasswordDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/UserChangePasswordDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkForm/WindowTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkForm/WindowTools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,22 +154,36 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resource" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/image" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Dave\Documents\综合实践beta\src\resource" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Dave\Documents\综合实践beta\image" />
       <recent name="C:\Users\Dave\Documents\综合实践beta" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dave\Documents\综合实践beta\image" />
+      <recent name="C:\Users\Dave\Documents\综合实践beta\src\resource" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.DataBase">
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="CreateTrainDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WorkForm.CreateTrainDialog" />
+      <module name="综合实践beta" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="WorkForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataBase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Logics.DataBase" />
       <module name="综合实践beta" />
@@ -171,8 +210,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WorkForm.RegisterDialog" />
+    <configuration name="LoginDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WorkForm.LoginDialog" />
       <module name="综合实践beta" />
       <extension name="coverage">
         <pattern>
@@ -184,21 +223,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StuffUserGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WorkForm.StuffUserGUI" />
-      <module name="综合实践beta" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="WorkForm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TicketTableDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WorkForm.TicketTableDialog" />
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WorkForm.Test" />
       <module name="综合实践beta" />
       <extension name="coverage">
         <pattern>
@@ -212,11 +238,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.LoginDialog" />
         <item itemvalue="Application.DataBase" />
-        <item itemvalue="Application.StuffUserGUI" />
+        <item itemvalue="Application.CreateTrainDialog" />
         <item itemvalue="Application.DefaultUserGUI" />
-        <item itemvalue="Application.TicketTableDialog" />
-        <item itemvalue="Application.RegisterDialog" />
       </list>
     </recent_temporary>
   </component>
@@ -225,12 +251,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:TicketSystem" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -252,7 +273,24 @@
       <workItem from="1615786932164" duration="10390000" />
       <workItem from="1615812152173" duration="12974000" />
       <workItem from="1615859203839" duration="18763000" />
-      <workItem from="1616111626279" duration="373000" />
+      <workItem from="1616111626279" duration="3046000" />
+      <workItem from="1616116623781" duration="59000" />
+      <workItem from="1616116697252" duration="528000" />
+      <workItem from="1616119566621" duration="1029000" />
+      <workItem from="1616121003693" duration="670000" />
+      <workItem from="1616308312626" duration="7071000" />
+      <workItem from="1616372108610" duration="1045000" />
+      <workItem from="1616382762750" duration="422000" />
+      <workItem from="1616411665772" duration="16000" />
+      <workItem from="1616411713128" duration="3579000" />
+      <workItem from="1616556135766" duration="494000" />
+      <workItem from="1616561318169" duration="2452000" />
+      <workItem from="1616716123990" duration="6379000" />
+      <workItem from="1616824134053" duration="594000" />
+      <workItem from="1616935634536" duration="6000" />
+      <workItem from="1616975661977" duration="11374000" />
+      <workItem from="1617167392820" duration="1225000" />
+      <workItem from="1617278345019" duration="7900000" />
     </task>
     <servers />
   </component>
@@ -264,18 +302,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1615807504952" />
-    <state x="788" y="227" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615887035747">
+    <state x="788" y="227" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616976501504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="788" y="227" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615887035747" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1615894392226">
+    <state x="788" y="227" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616976501504" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1616987176306">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1615894392226" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1616987176306" />
     <state x="689" y="309" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1615855740227">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="309" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615855740227" />
+    <state x="580" y="198" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1616313489978">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="580" y="198" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616313489978" />
     <state x="803" y="416" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1615789962523">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -296,26 +338,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615861809420" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1615774525432">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1616586631019">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1615774525432" />
-    <state width="636" height="282" key="GridCell.Tab.0.bottom" timestamp="1616111991334">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1616586631019" />
+    <state width="636" height="282" key="GridCell.Tab.0.bottom" timestamp="1617323315592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="636" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1616111991334" />
-    <state width="636" height="282" key="GridCell.Tab.0.center" timestamp="1616111991334">
+    <state width="636" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617323315592" />
+    <state width="636" height="282" key="GridCell.Tab.0.center" timestamp="1617323315592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="636" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1616111991334" />
-    <state width="636" height="282" key="GridCell.Tab.0.left" timestamp="1616111991334">
+    <state width="636" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617323315592" />
+    <state width="636" height="282" key="GridCell.Tab.0.left" timestamp="1617323315592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="636" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1616111991334" />
-    <state width="636" height="282" key="GridCell.Tab.0.right" timestamp="1616111991334">
+    <state width="636" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617323315592" />
+    <state width="636" height="282" key="GridCell.Tab.0.right" timestamp="1617323315592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="636" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1616111991334" />
+    <state width="636" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617323315592" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1615847755042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -328,17 +370,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="676" y="159" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615891957495" />
-    <state x="658" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1616111637267">
+    <state x="658" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1617278370354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="658" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616111637267" />
+    <state x="658" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1617278370354" />
     <state x="1048" y="300" key="extract.method.dialog" timestamp="1615889618512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1048" y="300" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615889618512" />
-    <state x="623" y="225" key="search.everywhere.popup" timestamp="1615857683459">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1616987211092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615857683459" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1616987211092" />
   </component>
 </project>

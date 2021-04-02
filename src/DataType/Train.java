@@ -3,11 +3,21 @@ package DataType;
 import java.util.Calendar;
 
 public class Train {
+    private long uid;
     private String name;
     private int from;
     private int to;
     private Calendar launchTime;
     private int minuteCost;
+
+    public Train(long uid, String name, int from, int to, Calendar launchTime, int minuteCost) {
+        this.uid = uid;
+        this.name = name;
+        this.from = from;
+        this.to = to;
+        this.launchTime = launchTime;
+        this.minuteCost = minuteCost;
+    }
 
     public Train(String name, int from, int to, Calendar launchTime, int minuteCost) {
         this.name = name;
@@ -15,6 +25,14 @@ public class Train {
         this.to = to;
         this.launchTime = launchTime;
         this.minuteCost = minuteCost;
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
     public String getName() {

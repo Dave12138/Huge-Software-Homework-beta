@@ -7,6 +7,24 @@ public class ImagePanel extends JPanel {
 
     private Image img;
 
+    public ImagePanel(String file) {
+        this(new ImageIcon(file).getImage());
+    }
+
+    public ImagePanel(String file, double scale) {
+        this(new ImageIcon(file).getImage(), scale);
+    }
+
+    public ImagePanel(Image img, double scale) {
+        this.img = img;
+        Dimension size = new Dimension((int) (img.getWidth(null) * scale), (int) (img.getHeight(null) * scale));
+        setSize(size);
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
+        setLayout(null);
+    }
+
     public ImagePanel(Image img) {
         this.img = img;
         Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));

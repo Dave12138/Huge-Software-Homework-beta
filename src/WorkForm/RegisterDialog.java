@@ -1,7 +1,13 @@
 package WorkForm;
 
+import DataType.User;
+import Logics.DataBase;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
+import java.util.Arrays;
 
 public class RegisterDialog extends JDialog {
     private JPanel contentPane;
@@ -12,6 +18,7 @@ public class RegisterDialog extends JDialog {
     private JPasswordField passwordField2;
 
     public RegisterDialog() {
+        setTitle("注册");
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,12 +59,35 @@ public class RegisterDialog extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
-        dispose();
+        var name = textField1.getText();
+        if (name.length() < 3 || name.length() > 20) {
+            JOptionPane.showMessageDialog(this, "用户名" + (name.length() < 3 ? "过短" : "过长"));
+            return;
+        }
+        var pass = passwordField1.getPassword();
+        if (pass.length < 6 || pass.length > 20) {
+            JOptionPane.showMessageDialog(this, "密码" + (pass.length < 6 ? "过短" : "过长"));
+            return;
+        }
+        if (!Arrays.equals(pass, passwordField2.getPassword())) {
+            JOptionPane.showMessageDialog(this, "两次输入的密码不一致");
+            return;
+        }
+        try {
+            User u = new User(name, String.valueOf(pass));
+            DataBase.insertUser(u);
+            dispose();
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(this, "用户名已存在");
+        } catch (IllegalArgumentException | SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.toString());
+        }
     }
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
     }
+
 }

@@ -1,36 +1,71 @@
 package WorkForm;
 
+import DataType.Train;
+import DataType.User;
+import Logics.DataBase;
+import exception.MyCustomMessageException;
+
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import javax.swing.event.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class StuffUserGUI {
+public class StuffUserGUI extends JFrame {
 
-    static final String[] USER_HEADER = {"用户名", "密码", "购买票数"};
-    static final String[] TRAIN_HEADER = {"车次", "出发地", "目的地", "发车时间", "行程"};
+    static final String[] USER_HEADER = {"用户名", "密码", "有管理员权限"};
+    static final String[] TRAIN_HEADER = {"uid", "车次", "出发地", "目的地", "发车时间", "行程"};
     private DefaultTableModel userTableModel;
     private DefaultTableModel trainTableModel;
-    private JTabbedPane tabbedPane1;
-    private JPanel panel1;
-    private JPanel userManagePanel;
-    private JPanel trainManagePanel;
-    private JFrame window;
+    private JTabbedPane mainTabbedPane;
+    private JPanel basePanel;
+    private JScrollPane userManagePanel;
+    private JScrollPane trainManagePanel;
+    private JButton userDeleteButton;
+    private JButton trainAddButton;
+    private JButton trainRemoveButton;
+    private JTextField trainSearch;
+    private JTextField userSearch;
 
     public StuffUserGUI() {
-        window = new JFrame("管理页面");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setContentPane(tabbedPane1);
+        super("管理页面");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setContentPane(basePanel);
 
 
-        tabbedPane1.addChangeListener(new ChangeListener() {
+        mainTabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 System.out.println("change Listener 触发");
                 //todo: 链接至刷新列表事件
+                User[] us = DataBase.getUsers();
+                Train[] tr = DataBase.getTrains();
+                if (us != null) {
+                    updateUserTable(DataBase.usersToTable(us));
+                }
+                if (tr != null) {
+                    updateTrainTable(DataBase.trainsToTable(tr));
+                }
+            }
+        });
+        userSearch.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+
+                User[] us = DataBase.getUsers(userSearch.getText());
+                updateUserTable(DataBase.usersToTable(us));
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+
+                User[] us = DataBase.getUsers(userSearch.getText());
+                updateUserTable(DataBase.usersToTable(us));
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
             }
         });
     }
@@ -41,43 +76,59 @@ public class StuffUserGUI {
     }
 
     public void run() {
-        window.pack();
-        Dimension frameSize = window.getSize();
-        frameSize.width *= 4;
-        frameSize.height *= 2;
-        window.setSize(frameSize);
-        WindowTools.moveToCenter(window);
-        window.setVisible(true);
-
+        pack();
+        WindowTools.scaleWindow(this, 4, 2);
+        WindowTools.moveToCenter(this);
+        setVisible(true);
     }
 
     public void drawUserList(Vector<Vector<Object>> vectors) {
         userTableModel = new DefaultTableModel(vectors, new Vector<>(Arrays.asList(USER_HEADER))) {
             public boolean isCellEditable(int row, int column) {
-                return false;
+                return column > 0;
             }
         };
-
+        userTableModel.addTableModelListener(e -> {
+            int type = e.getType();//获取事件类型(增、删、改等)
+            int row = e.getFirstRow();//获取触发事件的行索引
+            int column = e.getColumn();//获取触发事件的列索引
+            if (type == TableModelEvent.UPDATE) {
+                System.out.println("此事件是由\"修改\"触发,在" + row + "行" + column + "列");
+                if (column == 1) {
+                    String nPass = (String) userTableModel.getValueAt(row, column);
+                    if (nPass.length() < 6 || nPass.length() > 20) {
+                        JOptionPane.showMessageDialog(this, "密码" + (nPass.length() < 6 ? "过短" : "过长"));
+                    } else {
+                        try {
+                            DataBase.updateUserPassword((String) userTableModel.getValueAt(row, 0), nPass.toCharArray());
+                        } catch (MyCustomMessageException ex) {
+                            ex.showDialog();
+                        }
+                    }
+                }
+                User[] us = DataBase.getUsers(userSearch.getText());
+                updateUserTable(DataBase.usersToTable(us));
+            }
+        });
         var table = new JTable(userTableModel);
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.getTableHeader().setReorderingAllowed(false);
-        userManagePanel.removeAll();
-        userManagePanel.add(new JScrollPane(table));
+//        userManagePanel.removeAll();
+        userManagePanel.setViewportView(table);
     }
 
     public void drawTrainList(Vector<Vector<Object>> vectors) {
         trainTableModel = new DefaultTableModel(vectors, new Vector<>(Arrays.asList(TRAIN_HEADER))) {
             public boolean isCellEditable(int row, int column) {
-                return false;
+                return column > 0;
             }
-
         };
 
         var table = new JTable(trainTableModel);
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.getTableHeader().setReorderingAllowed(false);
-        trainManagePanel.removeAll();
-        trainManagePanel.add(new JScrollPane(table));
+//        trainManagePanel.removeAll();
+        trainManagePanel.setViewportView(table);
     }
 
     public void updateUserTable(Vector<Vector<Object>> vectors) {
@@ -88,5 +139,9 @@ public class StuffUserGUI {
 
     public void updateTrainTable(Vector<Vector<Object>> vectors) {
         trainTableModel.setDataVector(vectors, new Vector<>(Arrays.asList(TRAIN_HEADER)));
+    }
+
+    private void createUIComponents() {
+        basePanel = new ImagePanel("image/86541424_p0.jpg");
     }
 }

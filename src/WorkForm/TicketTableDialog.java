@@ -1,9 +1,14 @@
 package WorkForm;
 
+import Logics.DataBase;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Vector;
 
 public class TicketTableDialog extends JDialog {
@@ -11,12 +16,17 @@ public class TicketTableDialog extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JScrollPane tablePanel;
-    private Vector<Vector<Object>> tableVector;
+    private JComboBox<String> comboBox1;
+    private JComboBox<String> comboBox2;
+    private JComboBox<Integer> yearCombo;
+    private JComboBox<Integer> monCombo;
+    private JComboBox<Integer> dayCombo;
+    private DefaultTableModel trainTableModel;
     private String target;
     private JTable ticketTable;
+    private double cost;
 
-    public TicketTableDialog(Vector<Vector<Object>> tableVector) {
-        this.tableVector = tableVector;
+    public TicketTableDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -32,7 +42,24 @@ public class TicketTableDialog extends JDialog {
                 onCancel();
             }
         });
-
+        setPlaces(DataBase.getPlaces());
+        {
+            Calendar pointer = Calendar.getInstance();
+            int preYear = -1;
+            int preMon = -1;
+            for (int i = 0; i < 14; i++) {
+                if (preYear != pointer.get(Calendar.YEAR)) {
+                    preYear = pointer.get(Calendar.YEAR);
+                    yearCombo.addItem(preYear);
+                }
+                if (preMon != pointer.get(Calendar.MONTH)) {
+                    preMon = pointer.get(Calendar.MONTH);
+                    monCombo.addItem(preMon + 1);
+                }
+                dayCombo.addItem(pointer.get(Calendar.DAY_OF_MONTH) + 1);
+                pointer.add(Calendar.DATE, 1);
+            }
+        }
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -47,23 +74,36 @@ public class TicketTableDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        ItemListener il = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    Calendar today = Calendar.getInstance();
+                    today.set((Integer) yearCombo.getSelectedItem(), (Integer) monCombo.getSelectedItem() - 1, (Integer) dayCombo.getSelectedItem());
+//                    System.out.println(DataBase.formatCalendar(today));
+                    updateTrainList(DataBase.trainsToTable(DataBase.getTrains("`from`=" + (comboBox1.getSelectedIndex() + 1) + " and `to`=" + (comboBox2.getSelectedIndex() + 1), today)));
+                }
+            }
+        };
+        comboBox1.addItemListener(il);
+        comboBox2.addItemListener(il);
+        dayCombo.addItemListener(il);
+        monCombo.addItemListener(il);
+        yearCombo.addItemListener(il);
+        cost = 0;
     }
 
-    public static void main(String[] args) {
-        String[] dat1 = {"a", "b", "c", "d", "e"};
-        String[] dat2 = {"f", "g", "h", "i", "j"};
-        var vvv = new Vector<Vector<Object>>();
-        vvv.add(new Vector<>(Arrays.asList(dat1)));
-        vvv.add(new Vector<>(Arrays.asList(dat2)));
-        TicketTableDialog dialog = new TicketTableDialog(vvv);
-        dialog.pack();
-        dialog.setVisible(true);
-        String st = dialog.getSelectTarget();
-        if (st == null) {
-            st = "未选择";
+
+    private void updateTrainList(Vector<Vector<Object>> vector) {
+
+        trainTableModel.setDataVector(vector, new Vector<>(Arrays.asList(StuffUserGUI.TRAIN_HEADER)));
+    }
+
+    private void setPlaces(String[] vector) {
+        for (String str : vector) {
+            comboBox1.addItem(str);
+            comboBox2.addItem(str);
         }
-        JOptionPane.showMessageDialog(null, st);
-        System.exit(0);
     }
 
     private void onOK() {
@@ -72,9 +112,23 @@ public class TicketTableDialog extends JDialog {
             JOptionPane.showMessageDialog(null, "未选择车票");
             return;
         }
-
-        target = ticketTable.getValueAt(row, 0).toString();
-        dispose();
+        String timeStr = ticketTable.getValueAt(row, 4).toString();
+        SimpleDateFormat fmt = new SimpleDateFormat(DataBase.DATE_FORMAT);
+        Calendar startTime = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, 10);
+        try {
+            startTime.setTime(fmt.parse(timeStr));
+            if (!now.before(startTime)) {
+                JOptionPane.showMessageDialog(this, "停止售票：即将到达发车时间");
+                return;
+            }
+            target = ticketTable.getValueAt(row, 0).toString();
+            cost = Double.parseDouble(ticketTable.getValueAt(row, 6).toString());
+            dispose();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void onCancel() {
@@ -83,14 +137,13 @@ public class TicketTableDialog extends JDialog {
     }
 
     private void createUIComponents() {
-        String[] header = {"车次", "出发地", "目的地", "发车时间", "行程时长"};
-        DefaultTableModel model = new DefaultTableModel(tableVector, new Vector<>(Arrays.asList(header))) {
+        trainTableModel = new DefaultTableModel(null, new Vector<>(Arrays.asList(StuffUserGUI.TRAIN_HEADER))) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
 
-        ticketTable = new JTable(model);
+        ticketTable = new JTable(trainTableModel);
         ticketTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ticketTable.getTableHeader().setReorderingAllowed(false);
         tablePanel = new JScrollPane(ticketTable);
@@ -98,5 +151,9 @@ public class TicketTableDialog extends JDialog {
 
     public String getSelectTarget() {
         return target;
+    }
+
+    public double getCost() {
+        return cost;
     }
 }

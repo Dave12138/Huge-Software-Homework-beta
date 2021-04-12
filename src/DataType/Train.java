@@ -10,21 +10,25 @@ public class Train {
     private Calendar launchTime;
     private int minuteCost;
 
-    public Train(long uid, String name, int from, int to, Calendar launchTime, int minuteCost) {
+
+    private double moneyCost;
+
+    public Train(long uid, String name, int from, int to, Calendar launchTime, int minuteCost, double moneyCost) {
         this.uid = uid;
         this.name = name;
         this.from = from;
         this.to = to;
         this.launchTime = launchTime;
         this.minuteCost = minuteCost;
+        this.moneyCost = moneyCost;
+    }
+
+    public Train(long uid, String name, int from, int to, Calendar launchTime, int minuteCost) {
+        this(uid, name, from, to, launchTime, minuteCost, 20);
     }
 
     public Train(String name, int from, int to, Calendar launchTime, int minuteCost) {
-        this.name = name;
-        this.from = from;
-        this.to = to;
-        this.launchTime = launchTime;
-        this.minuteCost = minuteCost;
+        this(0, name, from, to, launchTime, minuteCost, 20);
     }
 
     public long getUid() {
@@ -73,5 +77,13 @@ public class Train {
 
     public void setMinuteCost(int minuteCost) {
         this.minuteCost = minuteCost;
+    }
+
+    public double getMoneyCost() {
+        return moneyCost;
+    }
+
+    public void setMoneyCost(double moneyCost) {
+        this.moneyCost = moneyCost;
     }
 }

@@ -6,25 +6,24 @@ import exception.MyCustomMessageException;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.Arrays;
 
-public class UserChangePasswordDialog extends JDialog {
+public class RechargeDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JPasswordField oldField;
-    private JPasswordField repeatField;
-    private JPasswordField newField;
+    private JButton 氪100Button;
+    private JButton 氪20Button;
     private User user;
 
-    public UserChangePasswordDialog(User u) {
+    public RechargeDialog(User user) {
         setContentPane(contentPane);
+        this.user = user;
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        user = u;
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                onOK(50);
             }
         });
 
@@ -48,31 +47,33 @@ public class UserChangePasswordDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        氪100Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onOK(100);
+            }
+        });
+        氪20Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                onOK(20);
+            }
+        });
     }
 
 
-    private void onOK() {
-        if (!user.getPassword().equals(String.valueOf(oldField.getPassword()))) {
-            JOptionPane.showMessageDialog(this, "旧密码不正确");
-            return;
-        }
-
-        char[] pass = newField.getPassword();
-        if (pass.length < 6 || pass.length > 20) {
-            JOptionPane.showMessageDialog(this, "密码" + (pass.length < 6 ? "过短" : "过长"));
-            return;
-        }
-        if (!Arrays.equals(pass, repeatField.getPassword())) {
-            JOptionPane.showMessageDialog(this, "两次输入的密码不一致");
-            return;
-        }
+    private void onOK(int val) {
+        user.recharge(val);
         try {
-            DataBase.updateUserPassword(user.getName(), pass);
-            user.setPassword(pass);
-
+            DataBase.updateUserMoney(user.getName(), user.getMoney());
             dispose();
         } catch (MyCustomMessageException e) {
             e.printStackTrace();
+            try {
+                user.consume(val);
+            } catch (MyCustomMessageException ignore) {
+            }
         }
     }
 

@@ -23,25 +23,26 @@ public class TicketSystem {
     }
 
     public void showFrame() {
-        JFrame frame = null;
+        JFrame frame;
         if (user instanceof Admin) {
-            frame = new StuffUserGUI();
-            StuffUserGUI f = (StuffUserGUI) frame;
+            StuffUserGUI f = new StuffUserGUI();
+            frame = f;
             User[] us = DataBase.getUsers();
             Train[] tr = DataBase.getTrains();
             if (us != null) {
                 f.drawUserList(DataBase.usersToTable(us));
             }
             if (tr != null) {
-                f.drawUserList(DataBase.trainsToTable(tr));
+                f.drawTrainList(DataBase.trainsToTable(tr));
             }
-
         } else {
-            frame = new DefaultUserGUI();
+            DefaultUserGUI df = new DefaultUserGUI();
+            df.setLoginUser(user);
+            frame = df;
         }
-
         frame.pack();
         WindowTools.moveToCenter(frame);
         frame.setVisible(true);
     }
+
 }

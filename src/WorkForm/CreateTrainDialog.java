@@ -1,9 +1,20 @@
 package WorkForm;
 
+import DataType.Train;
+import Logics.DataBase;
+
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 import java.awt.event.*;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Vector;
+
+import static Logics.DataBase.DATE_FORMAT;
 
 public class CreateTrainDialog extends JDialog {
     private JPanel contentPane;
@@ -12,19 +23,15 @@ public class CreateTrainDialog extends JDialog {
     private JComboBox<String> fromCombo;
     private JComboBox<String> toCombo;
     private JFormattedTextField trainName;
-    private JComboBox<Integer> yearCombo;
-    private JComboBox<Integer> monCombo;
-    private JComboBox<Integer> dayCombo;
-    private JComboBox<Integer> startHour;
-    private JComboBox<Integer> startMinute;
-    private JSpinner timeCostSpinner;
+    private JFormattedTextField timeCost;
+    private JFormattedTextField startTime;
+    private JFormattedTextField moneyCost;
 
     public CreateTrainDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        //todo:trainName 输入控制
-        //todo:timeCostSpinner下限
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -37,6 +44,7 @@ public class CreateTrainDialog extends JDialog {
             }
         });
 
+
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -44,27 +52,6 @@ public class CreateTrainDialog extends JDialog {
                 onCancel();
             }
         });
-        Calendar calendar = Calendar.getInstance();
-        for (int i = 0; i < 4; i++) {
-            yearCombo.addItem(calendar.get(Calendar.YEAR) + 2 - i);
-        }
-        for (int i = 1; i < 13; i++) {
-            monCombo.addItem(i);
-        }
-        for (int i = 1; i < 32; i++) {
-            dayCombo.addItem(i);
-        }
-        for (int i = 0; i < 24; i++) {
-            startHour.addItem(i);
-        }
-        for (int i = 0; i < 60; i++) {
-            startMinute.addItem(i);
-        }
-        yearCombo.setSelectedItem(calendar.get(Calendar.YEAR));
-        monCombo.setSelectedItem(calendar.get(Calendar.MONTH) + 1);
-        dayCombo.setSelectedItem(calendar.get(Calendar.DATE));
-        startHour.setSelectedItem(calendar.get(Calendar.HOUR_OF_DAY));
-        startMinute.setSelectedItem(calendar.get(Calendar.MINUTE));
 
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
@@ -76,6 +63,7 @@ public class CreateTrainDialog extends JDialog {
 
     public static void main(String[] args) {
         CreateTrainDialog dialog = new CreateTrainDialog();
+        dialog.setPlaces(new Vector<>(Arrays.asList(DataBase.getPlaces())));
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
@@ -86,15 +74,64 @@ public class CreateTrainDialog extends JDialog {
             fromCombo.addItem(str);
             toCombo.addItem(str);
         }
+
+    }
+
+    public void setPlaces(String[] vector) {
+        for (String str : vector) {
+            fromCombo.addItem(str);
+            toCombo.addItem(str);
+        }
+
     }
 
     private void onOK() {
-        // add your code here
-        dispose();
+        try {
+            if (fromCombo.getSelectedIndex() == toCombo.getSelectedIndex()) {
+                JOptionPane.showMessageDialog(this, "禁止原地tp");
+                return;
+            }
+            Calendar c = Calendar.getInstance();
+            c.setTime((java.util.Date) startTime.getValue());
+            double timeCostValueD = (Double) timeCost.getValue();
+            int timeCostValue = (int) timeCostValueD;
+            DataBase.insertTrain(new Train(
+                    0,
+                    (String) (trainName.getValue()),
+                    fromCombo.getSelectedIndex() + 1,
+                    toCombo.getSelectedIndex() + 1,
+                    c,
+                    timeCostValue,
+                    (Double) moneyCost.getValue()
+            ));
+            dispose();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
+    }
+
+    private void createUIComponents() {
+
+        SimpleDateFormat tFmt = new SimpleDateFormat(DATE_FORMAT);
+        startTime = new JFormattedTextField(tFmt);
+        Calendar calendar = Calendar.getInstance();
+        startTime.setValue(calendar.getTime());
+        NumberFormatter nFmt=new NumberFormatter();
+        nFmt.setMinimum(0);
+        moneyCost = new JFormattedTextField(nFmt);
+        timeCost = new JFormattedTextField(nFmt);
+        try {
+            MaskFormatter fm = new MaskFormatter("H####");
+            trainName = new JFormattedTextField(fm);
+            trainName.setValue("D2333");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
